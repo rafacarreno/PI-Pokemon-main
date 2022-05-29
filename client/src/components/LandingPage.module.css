@@ -1,0 +1,35 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.body{
+    background: #155263;
+}
+
+.btn {
+    width: 200px;
+    height: 60px;
+    background: #ff6f3c;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+}
+
+.btn::before{
+    content: 'INGRESAR';
+    color: white;
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 18px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all .5s ease-in-out;
+}
+.btn:hover::before{
+    top: -30px;
+}

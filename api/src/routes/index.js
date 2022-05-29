@@ -59,7 +59,7 @@ const dbData = async () => {
                 through: { attributes: [] },
             },
         });
-
+       // console.log('DBDATAAAA--->>',dbData[0].dataValues.types);
         const pokeDB = dbData?.map((e) => {
             return {
                 id: e.dataValues.id,
@@ -72,6 +72,7 @@ const dbData = async () => {
                 speed: e.dataValues.speed,
                 types: e.dataValues.types.map((t) => t.dataValues.name),
                 img: e.dataValues.img,
+                createdInDB:true,//ver si no lo agrego funciona igual por el defaultValue:true
             };
         });
         return pokeDB;
@@ -95,10 +96,10 @@ const getAllData = async () => {
 
 
 //---------------------------------------------------------- FIND ONE POKÉMON DATA--------------------------------------------------------------------------------------
-const findPokemon = async (id) =>{
+const findPokemon = async (X) => {
     try {
-        const apiID = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
-        const pokeData = {            
+        const apiID = await axios.get(`https://pokeapi.co/api/v2/pokemon/${X}`);
+        const pokeData = {
             id: apiID.data.id,
             name: apiID.data.name,
             height: apiID.data.height,
@@ -112,7 +113,7 @@ const findPokemon = async (id) =>{
 
         };
         return pokeData;
-    } catch(error){
+    } catch (error) {
         console.log(error);
     }
 };
@@ -196,51 +197,76 @@ router.post('/pokemons', async (req, res) => {
     }
 });
 
-//---------------------------------------------------------------- TYPES DATA-------------------------------------------------------------------------------------
-const typesData = async () => {
-    try {
-        const apiInfo = await axios.get('https://pokeapi.co/api/v2/type');
-        const types = apiInfo.data?.results.map((e) => {
-            return {
-                name: e.name
-            }
-        });
-        const dbTypes = await Type.findAll();
-        if(dbTypes) {
-            await Type.bulkCreate(types)
-        } 
-    } catch(error){
-        console.log(error);
-    }
-};
-
-const getTypes = async () => {
-    try{
-        let typesDb = await Type.findAll();
-        //console.log(typesDb);
-        typesDb = typesDb.map((e) => e.toJSON());
-        //console.log(typesDb);
-        return typesDb;
-    } catch (error){
-        console.log(error);
-    }
-};
 
 //-------------------------------------------------------------GET /types-----------------------------------------------------------------------------------------
 router.get('/types', async (req, res) => {
-    try{
-        await typesData();
-        let allTypes = await getTypes();
-        allTypes = allTypes.map((e) => {
-            return{
-                id:e.id,
-                name:e.name,
-            };
-        });
-        res.status(200).send(allTypes);
-    }catch(error){
+    const apiInfo = await axios.get('https://pokeapi.co/api/v2/type');
+    try {
+        const types = await apiInfo.data.results.map((e) => e.name);
+
+        for (const iterator of types) {
+            let [types, creted] = await Type.findOrCreate({
+                where: {
+                    name: iterator
+                },
+            });
+        };
+
+        const allTypes = await Type.findAll();
+        res.status(200).send(allTypes);        
+    } catch (error) {
         console.log(error);
     }
 });
 
+
+// //---------------------------------------------------------------- TYPES DATA-------------------------------------------------------------------------------------
+// const typesData = async () => {
+//     try {
+//         const apiInfo = await axios.get('https://pokeapi.co/api/v2/type');
+//         const types = apiInfo.data.results.map((e) => {
+//             return {
+//                 name: e.name
+//             };
+//         });
+//         let dbTypes = await Type.findAll();
+//         //console.log('DBTYPES---->',dbTypes)
+//         if(dbTypes) {
+//             await Type.bulkCreate(types);
+//         } 
+//     } catch(error){
+//         console.log(error);
+//     }
+// };
+
+// const getTypes = async () => {
+//     try{
+//         let typesDb = await Type.findAll();
+//         //console.log('ACAAA---->> OK!:',typesDb);
+//         typesDb = typesDb.map((e) => e.toJSON());
+//         //console.log('ACAAA---->> OK!:',typesDb);
+//         return typesDb;
+//     } catch (error){
+//         console.log(error);
+//     }
+// };
+
+// //-------------------------------------------------------------GET /types-----------------------------------------------------------------------------------------
+// router.get('/types', async (req, res) => {
+//     try{
+//         await typesData();
+//         let allTypes = await getTypes();
+//         //console.log('ALLTYPES 1.0---->',allTypes)
+//         allTypes = allTypes.map((e) => {
+//             return{
+//                 id:e.id,
+//                 name:e.name,
+//             };
+//         });
+//         //console.log('ALLTYPES 2.0---->',allTypes)
+//         res.status(200).send(allTypes);
+//     }catch(error){
+//         console.log(error);
+//     }
+// });
 module.exports = router;

@@ -1,0 +1,70 @@
+
+body {
+    background-image: url(https://cdna.artstation.com/p/assets/images/images/031/386/166/large/chang-wei-chen-scene-sketch-landscape1-1023-1920x1080.jpg?1603556197);
+}
+
+.mainFlex {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-top: 20px;
+    
+    margin-left: -105px;
+    margin-right: 15px;
+    padding: 20px 0;
+}
+
+.sectionFlex {
+    display: flex;
+    flex-direction: row;
+    margin-left: 10%;
+    margin-right: 10%;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-items: center;
+    margin-top: -50px;
+}
+
+.filters {
+    width: 50%;
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.selects {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.select {
+    padding: 8px 12px;
+    color: #333333;
+    background-color: #faf8f8;
+    border: 1px solid #dddddd;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.select:focus,
+.select:hover {
+    outline: none;
+    border: 1px solid #bbbbbb;
+}
+
+.select option {
+    background-color: #faf8f8;
+}
+
+.refreshButton {
+    background-color: transparent;
+    border: none;
+}
+
+.refreshButton:hover {
+    transform: scale(1.1);
+    transform: rotate(360deg);
+}
