@@ -126,7 +126,7 @@ router.get('/pokemons', async (req, res) => {
         const { name } = req.query;
         if (name) {
             const dbPoke = await dbData();
-            const findDbPoke = dbPoke.find((e) => e.name === name);
+            const findDbPoke = dbPoke.find((e) => e.name.toLowerCase() === name.toLowerCase());
             if (findDbPoke) {
                 return res.send(findDbPoke);
             } else {

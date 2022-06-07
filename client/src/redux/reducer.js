@@ -35,15 +35,29 @@ const filterPokemon = (filterSelected, arr) => {
         case 'API':
             return arr.filter((poke) => !poke.createdInDB);
         case 'DB':
-            return arr.filter((poke) => poke.createdInDB);
+            return arr.filter((poke) => (poke.createdInDB));
         default:
             return arr;
     }
 };
 
+const filterByOrigin = (origin, apiPokes, dbPokes, allPokes) => {
+    switch (origin) {
+        case 'API':
+            return apiPokes;
+        case 'DB':
+            if (dbPokes.length === 0){
+                alert('Aún no se ha creado ningun Pokémon.');
+                return allPokes;
+            }
+            return dbPokes;
+        default:
+            return allPokes;
+    }
+};
+
+
 const filterByTypes = (type, arr) => {
-    console.log('TYPEEE-->', type);
-    console.log('ARRRFILTER-->', arr);
     let filterAux = arr.filter((po) => po.types.includes(type));
     if (!filterAux.length > 0) {
         alert(`No se encontraron Pokémons del Tipo: "${type}".`);
@@ -89,10 +103,22 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 pokemonAux: orderPoke(action.payload, state.pokemonAux),
             };
-        case 'FILTER_POKEMON':
+        case 'FILTER_POKEMON': // filterPokemon(action.payload, state.pokemonAux),
+            // const filterResult =
+            //     action.payload['Origen'] === 'Predeterminado'
+            //         ? state.pokemonAux
+            //         : action.payload['Origen'] === 'API'
+            //             ? state.apiPoke
+            //             : action.payload['Origen'] === 'DB'
+            //                 ? state.createdPokemon
             return {
                 ...state,
-                pokemonAux: filterPokemon(action.payload, state.pokemonAux),
+                pokemonAux: filterByOrigin(action.payload, state.apiPoke, state.createdPokemon, state.pokemon),
+                    // action.payload === 'API'
+                    // ? state.apiPoke
+                    // : action.payload === 'DB'
+                    //     ? state.createdPokemon
+                    //     : state.pokemon,
             };
         case 'FILTER_BY_TYPES':
             return {

@@ -66,10 +66,10 @@ export function orderPokemon(orderSelected) {
     };
 };
 
-export function filterPokemon(filterSelected) {
+export function filterPokemon(payload) {//filterSelected
     return {
         type: 'FILTER_POKEMON',
-        payload: filterSelected,
+        payload,//filterSelected
     };
 };
 
