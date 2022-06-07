@@ -1,0 +1,65 @@
+.containerFather{
+    background-image: url(../img/Home/Home3.jpg);
+    height: 100vh;
+    justify-content: center;
+    justify-items: center;
+
+
+}
+.pokeImg {
+    width: 50%;
+    align-items: center;
+    color: white;
+    font-size: 25px;
+    position: absolute;
+    justify-content: center;
+
+}
+
+.pokeImg img {
+    position: absolute;
+    left: 45%;
+    top: 45%;
+    max-width: 250px;
+    max-height: 250px;
+}
+
+.pokeImg img:hover {
+    cursor: pointer;
+}
+
+.button {
+    position: relative;
+}
+
+.backHome {
+    padding: 10px 20px;
+    font-size: 15px;
+    border: 5px solid black;
+    background-color: #e9530e;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.75); 
+}
+
+
+.button button:hover {
+    transform: scale(1.1);
+    background-color: white;
+    color: #e9530e;
+}
+
+.cardStyle {    
+    position: absolute;
+    width: 100%;
+    left: 60%;
+    top: 20%;
+}
+
+.limite{
+    width: 1350px;
+    height: 390px;
+    position: relative;
+}

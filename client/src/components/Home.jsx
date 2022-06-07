@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
     getPokemons,
     getTypes,
-    searchPokemon,
     orderPokemon,
     filterByTypes,
     filterPokemon
@@ -11,22 +10,25 @@ import {
 import SearchBar from './SearchBar';
 import Card from './Card';
 import Pagination from "./Pagination";
-import Classes from './Home.module.css'
+import Classes from './Home.module.css';
+import PokeballLoader from '../img/Loading/PokeBallLoading.gif';
+
 
 
 export default function Home() {
+    const [, setReloadState] = useState(false);
     const dispatch = useDispatch();
     const allPokemons = useSelector((state) => state.pokemonAux);
+   // const statesLoaded = useSelector((state) => state.pokemon);
     const allTypes = useSelector((state) => state.types);
 
     const [currentPage, setCurrentPage] = useState(1);//pag selected
     const [pokemonsPerPage] = useState(12);//cards x page
-    const indexOfLastCard = currentPage * pokemonsPerPage; //12
-    const indexOfFirstCard = indexOfLastCard - pokemonsPerPage;//0 or 1
+    const indexOfLastCard = currentPage * pokemonsPerPage; //ultimo Elemento, posicion 11
+    const indexOfFirstCard = indexOfLastCard - pokemonsPerPage;//1er Elemento, posicion 0
     const currentPokemon = allPokemons?.slice(indexOfFirstCard, indexOfLastCard);//de todos los pokemones, solo toma los de la primer posicion y la ultima sin incluir a esta.
 
-    const [, setReloadState] = useState(false);
-    const [origin, setOrigin] = useState('All');
+    const [origin, setOrigin] = useState('Predeterminado');
 
 
     useEffect(() => {
@@ -57,67 +59,70 @@ export default function Home() {
         setReloadState((stateAux) => !stateAux);
     }
 
-    const getSearch = (value) => {
-        dispatch(searchPokemon(value));
-        setCurrentPage(1);
+
+
+    const handleloader = () => {
+        window.location.reload();//para actualizar la pagina!
     };
 
-    return (
-        <Fragment>
-            <SearchBar onSearch={getSearch} />
-            <main className={Classes.mainFlex}>
-                <div className={Classes.filters}>
-                    {/* FILTROS Y ORDENAMIENTO */}
-                    <div className={Classes.selects}>
-                        <select className={Classes.select} onChange={setOrder} name='Type'>
-                            <option
-                                value='Ordenar por nombre'
-                                selected disabled>
-                                Ordenar por nombre
-                            </option>
-                            <option value='Ascendiente'>A-Z</option>
-                            <option value='Descendiente'>Z-A</option>
-                        </select>
-                        <select className={Classes.select} onChange={setOrder} name='Type'>
-                            <option
-                                value='Ordenar por ataque'
-                                selected disabled>
-                                Ordenar por ataque
-                            </option>
-                            <option value='MayorAtaque'>Débil a Fuerte</option>
-                            <option value='MenorAtaque'>Fuerte a Débil</option>
-                        </select>
-                        <select className={Classes.select} onChange={handleFilterByType} name='Type'>
-                            <option
-                                value='Filtro por tipo'
-                                selected disabled> Ordenar por tipo</option>
-                            {allTypes?.map((type) => {
-                                return (
-                                    <option
-                                        key={type.name}
-                                        value={type.name}>{type.name}</option>
-                                )
-                            })
-                            }
-                        </select>
-                        <select className={Classes.select} onChange={handleFilter} name='Origen'>
-                            <option value='Filtro por origen' selected disabled>Filtrar por origen</option>
-                            <option value='All'>Todos los Pokemones</option>
-                            <option value='API'>Solo los de la API</option>
-                            <option value='DB'>Solo los Creados en BD</option>
-                        </select>
+    if (currentPokemon.length > 0) {
+        return (
+            <Fragment>
+                <SearchBar />
+                <main className={Classes.mainFlex}>
+                    <div className={Classes.filters}>
+                        <div className={Classes.selects}>
+                            <select className={Classes.select} onChange={setOrder} name='Type'>
+                                <option
+                                    value='Ordenar por nombre'
+                                    selected disabled>
+                                    Ordenar por nombre
+                                </option>
+                                <option value='Ascendiente'>A-Z</option>
+                                <option value='Descendiente'>Z-A</option>
+                            </select>
+                            <select className={Classes.select} onChange={setOrder} name='Type'>
+                                <option
+                                    value='Ordenar por ataque'
+                                    selected disabled>
+                                    Ordenar por ataque
+                                </option>
+                                <option value='AMayorAtaque'>Menor a mayor</option>
+                                <option value='AMenorAtaque'>Mayor a menor</option>
+                            </select>
+                            <select className={Classes.select} onChange={handleFilterByType} name='Type'>
+                                <option
+                                    value='Filtro por tipo'
+                                    selected disabled> Ordenar por tipo</option>
+                                {allTypes?.map((type) => {
+                                    return (
+                                        <option
+                                            key={type.name}
+                                            value={type.name}>{type.name}
+                                        </option>
+                                    )
+                                })
+                                }
+                            </select>
+                            <select className={Classes.select} onChange={handleFilter} name='Origen'>
+                                <option value='Filtro por origen' selected disabled>Filtrar por origen</option>
+                                <option value='Predeterminado'>Todos los Pokemones</option>
+                                <option value='API'>Solo los de la API</option>
+                                <option value='DB'>Solo los Creados en BD</option>
+                            </select>
+
+                            <button onClick={handleloader}>Actualizar</button>
+                        </div>
                     </div>
-                </div>
-                <div>
-
-                    <Pagination
-                        pokemonsPerPage={pokemonsPerPage}
-                        amountPokemons={allPokemons.length}
-                        paginated={paginated}
-                    />
-
+                    <div>
+                        <Pagination
+                            pokemonsPerPage={pokemonsPerPage}
+                            amountPokemons={allPokemons.length}
+                            paginated={paginated}
+                        />
+                    </div>
                     <section className={Classes.sectionFlex}>
-                        {currentPokemon?.map((e) => {
+                        {currentPokemon.map((e) => {
                             return (
                                 <Fragment key={e.id}>
                                     <div>
@@ -133,10 +138,15 @@ export default function Home() {
                             )
                         })}
                     </section>
-                </div>
+                </main>
+            </Fragment>
+        )
+    } else {
+        return (
+            <div className={Classes.loadingPage}>
+                <img alt='loading' src={PokeballLoader} />
+            </div>
+        )
+    }
 
-            </main>
-
-        </Fragment>
-    );
 };

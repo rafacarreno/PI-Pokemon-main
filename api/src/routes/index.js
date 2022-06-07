@@ -38,9 +38,10 @@ const apiData = async (api) => {
                 defense: el.data.stats[2].base_stat,
                 speed: el.data.stats[5].base_stat,
                 types: el.data.types.map((t) => t.type.name),
-                img: el.data.sprites.versions["generation-vii"]["ultra-sun-ultra-moon"].front_default,
+                img: el.data.sprites.other["dream_world"].front_default ? el.data.sprites.other["dream_world"].front_default : el.data.sprites.other["official-artwork"].front_default ,//.versions["generation-vii"]["ultra-sun-ultra-moon"].front_default,//
             };
         });
+        //console.log('IMAGEEEN---->', pokemons.img);
         return pokemons;
     } catch (error) {
         console.log(error);
@@ -109,8 +110,7 @@ const findPokemon = async (X) => {
             defense: apiID.data.stats[2].base_stat,
             speed: apiID.data.stats[5].base_stat,
             types: apiID.data.types.map((t) => t.type.name),
-            img: apiID.data.sprites.versions["generation-vii"]["ultra-sun-ultra-moon"].front_default,
-
+            img: apiID.data.sprites.other["dream_world"].front_default ? apiID.data.sprites.other["dream_world"].front_default : apiID.data.sprites.other["official-artwork"].front_default ,
         };
         return pokeData;
     } catch (error) {
@@ -119,7 +119,7 @@ const findPokemon = async (X) => {
 };
 
 
-//------------------------------------------------------GET /pokemons: & /pokemons?name="..."-------------------------------------------------------------------
+//----------------------------------------------------------------GET /pokemons:--------------------------------------------------------------------------------------------
 
 router.get('/pokemons', async (req, res) => {
     try {
@@ -131,7 +131,6 @@ router.get('/pokemons', async (req, res) => {
                 return res.send(findDbPoke);
             } else {
                 const findApiPoke = await findPokemon(name);
-                //console.log('ACAAAA->>>>>>>>', findApiPoke);
                 return findApiPoke ? res.send(findApiPoke) : res.status(400).send(`No se encontro el Pokémon: ` + name);
             }
         } else {
@@ -146,11 +145,11 @@ router.get('/pokemons', async (req, res) => {
 
 
 
-//-------------------------------------------------------- GET /pokemons/{idPokemon}:-----------------------------------------------------------------------------
+//-------------------------------------------------------- GET /pokemons/{idPokemon} & /pokemons?name="...":-----------------------------------------------------------------------------
 
 router.get('/pokemons/:id', async (req, res) => {
     try {
-        const { id } = req.params;
+        const { id } = req.params;//pregunto si id o(x idealmente) es un numero, ojo si convierte el numero en string, 
         if (id.includes('-')) {
             const dbPoke = await dbData();
             const findDbPoke = dbPoke.find((e) => e.id === id);

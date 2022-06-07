@@ -1,0 +1,93 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url(../img/SearchBar/FondoSearchBar.jpg);
+    z-index: 1;
+    box-shadow: rgba(-1px, 3px, 6px, -1px);
+    height: 70px;
+    
+}
+
+.img {
+    position: relative;
+    width: 60px;
+    align-self: center;
+    filter: drop-shadow(2px 2px 4px black);
+
+
+}
+
+.left_navbar {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 10px;
+    margin-left: 10px;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.left_navbar p {
+    margin-left: 5px;
+    margin-bottom: 50px;
+    color: white;
+}
+
+.right_navbar {
+    margin-right: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+}
+
+.right_navbar_div {
+    display: flex;
+    justify-content: center;
+}
+
+.right_navbar img {
+    position: relative;
+    margin-left: 25%;
+    margin-top: 12%;
+    height: 55px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    filter: drop-shadow(2px 2px 4px black);
+}
+
+.right_navbar p {
+    position: relative;
+    top: 5px;
+    margin-top: 30%;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.right_navbar img:hover {
+    transform: scale(0.9);
+}
+
+
+.middle_navbar {
+    width: 30%;
+    margin: auto;
+}
+
+.middle_navbar button {
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background-color: #D1D1D1;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+}
+
+.middle_navbar button:hover {
+    transform: scale(0.9);
+}

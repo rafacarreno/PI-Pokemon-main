@@ -1,0 +1,157 @@
+.container{
+    background-color: rgb(250, 153, 26);
+    height: 100vh;
+} 
+
+@media screen and (max-width: 1366px){ 
+    .container_h1{
+        width: 100%;
+        position: relative;
+        font-size: 300px;
+        margin: 0%;
+        letter-spacing: -50px;
+        bottom: 55px;
+    }
+    .container_h1 img {
+        position: relative;
+        left: 25px;
+        margin: 0%;
+        justify-content: center;
+    }
+    .container_h2{
+        position: relative;
+        font-size: 80px;
+        justify-content: center;
+        bottom: 130px;
+        margin: 0%;
+    }
+    .container_img{
+        position: absolute;
+        left: 0%;
+        bottom: 0%;
+        margin: 0%;
+    }        
+}
+/* @media screen and (max-width: 1184px){ 
+    .container_h1{
+        position: relative;
+        font-size: 300px;
+        margin: 0%;
+        letter-spacing: -50px;
+        bottom: 55px;
+    }
+    .container_h1 img {
+        position: relative;
+        left: 25px;
+        margin: 0%;
+        justify-content: center;
+    }
+    .container_h2{
+        position: relative;
+        font-size: 80px;
+        justify-content: center;
+        bottom: 130px;
+        margin: 0%;
+    }
+    .container_img{
+        position: absolute;
+        left: 0%;
+        bottom: 0%;
+        margin: 0%;
+    }        
+} */
+
+@media screen and (max-width: 883px){
+    .container_h1{
+        width: 100%;
+        position: relative;
+        font-size: 150px;
+        margin: 0%;
+        letter-spacing: -25px;
+        bottom: 20px;
+    }
+    .container_h1 img {
+        position: relative;
+        width: 20%;
+        top: 10px;
+        left: 10px;
+        margin: 0%;
+        justify-content: center;
+    }
+    .container_h2{
+        position: relative;
+        font-size: 80px;
+        justify-content: center;
+        bottom: 50px;
+        margin: 0%;
+    }
+    .container_img{
+        position: absolute;
+        left: 0%;
+        bottom: 0%;
+        margin: 0%;
+    }        
+}
+
+@media screen and (max-width: 624px){
+    .container_h1{
+        width: 100%;
+        position: relative;
+        font-size: 100px;
+        margin: 0%;
+        letter-spacing: -20px;
+        bottom: 0%;
+    }
+    .container_h1 img {
+        position: relative;
+        width: 85px;
+        left: 10px;
+        margin: 0%;
+        justify-content: center;
+    }
+    .container_h2{
+        position: relative;
+        font-size: 40px;
+        justify-content: center;
+        bottom: 0%;
+        margin: 0%;
+    }
+    .container_img{
+        position: absolute;
+        left: 0%;
+        bottom: 0%;
+        margin: 0%;
+    }        
+}
+
+@media screen and (max-width: 500px){
+    .container_h1{
+        width: 100%;
+        position: relative;
+        font-size: 100px;
+        margin: 0%;
+        letter-spacing: -20px;
+        bottom: 0%;
+    }
+    .container_h1 img {
+        position: relative;
+        width: 85px;
+        left: 10px;
+        margin: 0%;
+        justify-content: center;
+    }
+    .container_h2{
+        position: relative;
+        font-size: 40px;
+        justify-content: center;
+        bottom: 0%;
+        margin: 0%;
+    }
+    .container_img{
+        position: absolute;
+        width: 180px;
+        left: 0%;
+        bottom: 0%;
+        margin: 0%;
+    }        
+}

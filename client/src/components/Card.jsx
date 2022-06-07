@@ -16,14 +16,14 @@ export default function Card({ img, name, types, id }) {
             <div className={Classes.rest}>
                 <Link to={`/home/${id}`}>
                     <div className={Classes.img}>
-                        <img src={img} alt='Img not found!' />
+                        <img src={img} alt='Img not found!'/>
                     </div>
                 </Link>
             </div>
             <div className={Classes.types}>
                 {types.map((type) => {
                     return (
-                        <div key={type} width='200px' height='250px'>
+                        <div key={type}>
                             <p>{type && (type[0].toUpperCase()).concat(type.slice(1, type.length))}</p>
                         </div>
                     );

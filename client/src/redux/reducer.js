@@ -3,11 +3,8 @@ const initialState = {
     pokemonAux: [],
     apiPoke: [],
     createdPokemon: [],
+    pokemonPorID: [],
     types: [],
-};
-
-const search = (name, allPokemons) => {
-    return allPokemons.filter((e) => e.name.toLowerCase() === name.toLowerCase());
 };
 
 const orderPoke = (orderSelected, arr) => {
@@ -20,11 +17,11 @@ const orderPoke = (orderSelected, arr) => {
             return arr.sort((a, b) => {
                 return b.name.localeCompare(a.name);
             });
-        case 'MayorAtaque':
+        case 'AMayorAtaque':
             return arr.sort((a, b) => {
                 return a.attack - b.attack;
             });
-        case 'MenorAtaque':
+        case 'AMenorAtaque':
             return arr.sort((a, b) => {
                 return b.attack - a.attack;
             });
@@ -36,16 +33,24 @@ const orderPoke = (orderSelected, arr) => {
 const filterPokemon = (filterSelected, arr) => {
     switch (filterSelected) {
         case 'API':
-            return arr.filter((poke) => !poke.createdInDB);//filtro a todos los pokemones por el que cuentra con la propiedad createdInDB en false/no exista
+            return arr.filter((poke) => !poke.createdInDB);
         case 'DB':
-            return arr.filter((poke) => poke.createdInDB); //filtro a todos los pokemones por el que cuentra con la propiedad createdInDB en true
+            return arr.filter((poke) => poke.createdInDB);
         default:
             return arr;
     }
 };
 
 const filterByTypes = (type, arr) => {
-    return arr.filter((po) => po.types.includes(type));
+    console.log('TYPEEE-->', type);
+    console.log('ARRRFILTER-->', arr);
+    let filterAux = arr.filter((po) => po.types.includes(type));
+    if (!filterAux.length > 0) {
+        alert(`No se encontraron Pokémons del Tipo: "${type}".`);
+        return arr;
+    } else {
+        return filterAux;
+    }
 };
 
 
@@ -56,14 +61,20 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 pokemon: action.payload,
                 pokemonAux: action.payload,
+                pokemonPorID: action.payload,
                 apiPoke: filterPokemon('API', action.payload),
                 createdPokemon: filterPokemon('DB', action.payload),
             };
-        case 'GET_ONE_POKEMON':
+        case 'GET_POKEMON_ID':
             return {
                 ...state,
-                pokemonAux: action.payload,
+                pokemonPorID: action.payload,
             };
+        case 'GET_POKEMON_NAME':
+            return {
+                ...state,
+                pokemonAux: [action.payload],
+            }
         case 'GET_TYPES':
             return {
                 ...state,
@@ -73,11 +84,6 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
             }
-        case 'SEARCH_POKEMON':
-            return {
-                ...state,
-                pokemonAux: search(action.payload, state.pokemon),
-            };
         case 'ORDER_POKEMON':
             return {
                 ...state,
@@ -86,7 +92,7 @@ export default function rootReducer(state = initialState, action) {
         case 'FILTER_POKEMON':
             return {
                 ...state,
-                pokemonAux: filterPokemon(action.payload, state.pokemon),
+                pokemonAux: filterPokemon(action.payload, state.pokemonAux),
             };
         case 'FILTER_BY_TYPES':
             return {
@@ -97,7 +103,7 @@ export default function rootReducer(state = initialState, action) {
                         ? state.apiPoke
                         : action.payload['Origen'] === 'DB'
                             ? state.createdPokemon
-                            : state.pokemon
+                            : state.pokemon,
                 ),
             };
         default:
@@ -105,6 +111,5 @@ export default function rootReducer(state = initialState, action) {
                 ...state
             };
     }
-
 };
 

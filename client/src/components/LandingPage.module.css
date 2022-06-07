@@ -1,35 +1,25 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-.body{
-    background: #155263;
-}
-
-.btn {
-    width: 200px;
-    height: 60px;
-    background: #ff6f3c;
+.container_landing {
+    height: 100vh;
+    width: 100%;
+    background-image: url(../img/LandingPage/landpage33.jpg);
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 5px;
-}
+    
 
-.btn::before{
-    content: 'INGRESAR';
+}
+.container_landing h1{
     color: white;
-    font-family: 'Century Gothic', sans-serif;
-    font-size: 18px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: all .5s ease-in-out;
+    font-size: 100px;
+    text-shadow:  3px 3px 4px black;
 }
-.btn:hover::before{
-    top: -30px;
+.container_landing_img {
+    width: 15%;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+}
+.imgBottom{
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    width: 15%;
 }
