@@ -29,9 +29,9 @@ export function getPokemonName(name) {
                 type: 'GET_POKEMON_NAME',
                 payload: pokeName.data,
             });
-        } catch(error) {
+        } catch (error) {
             console.log(error);
-            //alert(`No se encontró ningun Pokémon llamado "${name}". Por favor, vuelva a intentarlo.`);
+            alert(`No se encontró ningun Pokémon llamado "${name}". Por favor, vuelva a intentarlo.`);
         }
     };
 };
@@ -66,10 +66,10 @@ export function orderPokemon(orderSelected) {
     };
 };
 
-export function filterPokemon(payload) {//filterSelected
+export function filterPokemon(payload) {
     return {
         type: 'FILTER_POKEMON',
-        payload,//filterSelected
+        payload,
     };
 };
 

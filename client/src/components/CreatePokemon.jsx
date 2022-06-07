@@ -1,16 +1,14 @@
 import Classes from './CreatePokemon.module.css'
 import { useEffect, useState } from "react";
-import { getTypes, postPokemon, getPokemonName } from "../redux/actions";
+import { postPokemon, getTypes } from "../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import CharmanderHome from '../img/goHome.png';
-
 
 const CreatePokemon = () => {
 
     const dispatch = useDispatch();
     const types = useSelector((state) => state.types);
-    //const [selectedTypes, setSelectedTypes] = useState([]);
     const [input, setInput] = useState({
         name: "",
         height: "",
@@ -22,7 +20,6 @@ const CreatePokemon = () => {
         img: "",
         types: [],
     });
-
 
     useEffect(() => {
         dispatch(getTypes());
@@ -68,26 +65,11 @@ const CreatePokemon = () => {
     };
 
     const handleChange = (e) => {
-        if (e.target.name === 'name') {
-            const nameValid = dispatch(getPokemonName(e.target.value));
-            if (nameValid.length > 0) {
-                alert(`El nombre "${e.target.value}" ya existe. Por favor elige otro.`);
-                setInput({
-                    ...input,
-                });
-            } else {
-                setInput({
-                    ...input,
-                    [e.target.name]: e.target.value,
-                });
-            }
-        }
-
         setInput({
             ...input,
             [e.target.name]: e.target.value,
         });
-    };
+    }
 
     return (
         <div className={Classes.container}>
@@ -202,7 +184,9 @@ const CreatePokemon = () => {
                         </div>
                     ))}
                 </div>
-                <button type="submit" className={Classes.form_button}>¡Crear!</button>
+                
+                <button 
+                disabled={input.name === ''}  type="submit" className={Classes.form_button}>¡Crear!</button>
             </form>
         </div>
     );

@@ -167,6 +167,7 @@ router.get('/pokemons/:id', async (req, res) => {
 
 router.post('/pokemons', async (req, res) => {
     try {
+
         const addPokemon = await Pokemon.create({
             name: req.body.name,
             height: req.body.height,
@@ -177,8 +178,7 @@ router.post('/pokemons', async (req, res) => {
             speed: req.body.speed,
             img: req.body.img,
         });
-
-        //console.log('ADDPOKEMON', addPokemon);
+    
 
         const typesByDB = await Type.findAll({
             where: {

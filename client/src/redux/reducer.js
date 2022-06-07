@@ -103,22 +103,10 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 pokemonAux: orderPoke(action.payload, state.pokemonAux),
             };
-        case 'FILTER_POKEMON': // filterPokemon(action.payload, state.pokemonAux),
-            // const filterResult =
-            //     action.payload['Origen'] === 'Predeterminado'
-            //         ? state.pokemonAux
-            //         : action.payload['Origen'] === 'API'
-            //             ? state.apiPoke
-            //             : action.payload['Origen'] === 'DB'
-            //                 ? state.createdPokemon
+        case 'FILTER_POKEMON':
             return {
                 ...state,
                 pokemonAux: filterByOrigin(action.payload, state.apiPoke, state.createdPokemon, state.pokemon),
-                    // action.payload === 'API'
-                    // ? state.apiPoke
-                    // : action.payload === 'DB'
-                    //     ? state.createdPokemon
-                    //     : state.pokemon,
             };
         case 'FILTER_BY_TYPES':
             return {
