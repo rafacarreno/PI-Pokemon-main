@@ -1,16 +1,11 @@
 .container{
-    position: relative;
-    margin-bottom: 3%;
+    padding: 10px 20px;
     border-radius: 30px;
     border: 3px solid black;
-    width: 15%;
     background-color: #faf8f8;
-    opacity: 0.8;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;    
+    opacity: 0.8;    
+    font-size: 20px;
+    position: absolute;
 }
 
 .top{
@@ -25,11 +20,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .types{
     position: relative;
-    top: -10px;
     display: flex;
     width: 100%;
     justify-content: space-evenly;

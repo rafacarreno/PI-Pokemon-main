@@ -73,7 +73,7 @@ const dbData = async () => {
                 speed: e.dataValues.speed,
                 types: e.dataValues.types.map((t) => t.dataValues.name),
                 img: e.dataValues.img,
-                createdInDB:true,//ver si no lo agrego funciona igual por el defaultValue:true
+                createdInDB:true,
             };
         });
         return pokeDB;

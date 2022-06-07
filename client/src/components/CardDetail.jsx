@@ -14,6 +14,9 @@ const CardDetail = ({ pokeInfo }) => {
             <h3 className={Classes.top}>ESTADÍSTICAS</h3>
             <div className={Classes.stats}>
                 <div className={Classes.stat}>
+                    ID: {pokeInfo.id}
+                </div>
+                <div className={Classes.stat}>
                     HP: {pokeInfo.hp}
                 </div>
                 <div className={Classes.stat}>

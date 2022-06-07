@@ -1,65 +1,35 @@
-.containerFather{
-    background-image: url(../img/Home/Home3.jpg);
+.container{
+    background-image: url(../img/Detail/fondo1.jpg);
     height: 100vh;
-    justify-content: center;
-    justify-items: center;
-
-
 }
-.pokeImg {
-    width: 50%;
+.subContainer{
+    display: flex;
+    justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.subContainer_name{
+    padding: 10px;
     color: white;
-    font-size: 25px;
+    font-size: xx-large;
+    text-shadow: 5px 5px 5px black;
     position: absolute;
-    justify-content: center;
+    bottom: 5%;
+    left: 27%;
 
 }
-
-.pokeImg img {
-    position: absolute;
-    left: 45%;
-    top: 45%;
-    max-width: 250px;
+.subContainer_img{
+    position: relative;
     max-height: 250px;
 }
-
-.pokeImg img:hover {
-    cursor: pointer;
-}
-
-.button {
-    position: relative;
-}
-
-.backHome {
-    padding: 10px 20px;
-    font-size: 15px;
-    border: 5px solid black;
-    background-color: #e9530e;
-    color: white;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.75); 
-}
-
-
-.button button:hover {
-    transform: scale(1.1);
-    background-color: white;
-    color: #e9530e;
-}
-
-.cardStyle {    
+.subContainer_card{
     position: absolute;
-    width: 100%;
-    left: 60%;
-    top: 20%;
+    top: 10%;
+    right: 40%;
 }
-
-.limite{
-    width: 1350px;
-    height: 390px;
-    position: relative;
+.goHome{
+    position: absolute;
+    left: 2%;
+    bottom: 0%;
 }

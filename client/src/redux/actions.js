@@ -31,7 +31,7 @@ export function getPokemonName(name) {
             });
         } catch(error) {
             console.log(error);
-            alert(`No se encontró ningun Pokémon llamado "${name}". Por favor, vuelva a intentarlo.`);
+            //alert(`No se encontró ningun Pokémon llamado "${name}". Por favor, vuelva a intentarlo.`);
         }
     };
 };

@@ -12,14 +12,18 @@
     text-shadow:  3px 3px 4px black;
 }
 .container_landing_img {
-    width: 15%;
+    width: 10%;
     position: absolute;
     top: 0%;
-    right: 0%;
+    left: 0%;
 }
 .imgBottom{
     position: absolute;
-    bottom: 0%;
-    right: 0%;
+    bottom: 3%;
+    right: 3%;
     width: 15%;
 }
+.imgBottom:hover {
+    transform: scale(1.1);
+}
+

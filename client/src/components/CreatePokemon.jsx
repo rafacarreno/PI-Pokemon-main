@@ -1,8 +1,9 @@
 import Classes from './CreatePokemon.module.css'
 import { useEffect, useState } from "react";
-import { getTypes, postPokemon, searchPokemon } from "../redux/actions";
+import { getTypes, postPokemon, getPokemonName } from "../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import CharmanderHome from '../img/goHome.png';
 
 
 const CreatePokemon = () => {
@@ -33,7 +34,7 @@ const CreatePokemon = () => {
                 ...input,
                 types: [...input.types, e.target.value],
             });
-        } else if (input.types.length <= 2) {
+        } else if (input.types.length === 2) {
             if (input.types.includes(e.target.value)) {
                 alert('¡Un Pokémon no puede ser parte de más de dos tipos y tampoco se pueden repetir! Por favor, revise su selección...');
             } else {
@@ -66,15 +67,22 @@ const CreatePokemon = () => {
 
     };
 
-    //---------------------------------------------------------------------VALIDACIONES----------------------------------------------------------------------------
-    //   >STAST: LOS DATOS NUMERICOS(UNICAMENTE) DE LOS STATS, PORQUE VALORES NEGATIVOS O VALOR CERO EN ALGUNOS STATS COMO VIDA, ALTURA Y PESO, DECIMALES NO SE SI SE PODRAN PERMITIR, !
-    //   >NOMBRE: NO SE PUEDEN INGRESAR NOMBRES DE POKEMONS YA EXISTENTES EN LA API O EN DB, Y NO PERMITIR INGRESAR SIMBOLOS (BUSCAR LA FORMULITA)
-    //   >VER COMO A MEDIDA QUE SE VA INGRESANDO EL INPUT, ADVERTIR SI YA ESTA INGRESANDO VALORES NEGATIVOS O DECIMALES, LOS NEGATIVOS PUEDEN SER CON EL MISMO DE LOS SIMBOLOS PARA TODOS LOS INPUTS!
-
-
-
-
     const handleChange = (e) => {
+        if (e.target.name === 'name') {
+            const nameValid = dispatch(getPokemonName(e.target.value));
+            if (nameValid.length > 0) {
+                alert(`El nombre "${e.target.value}" ya existe. Por favor elige otro.`);
+                setInput({
+                    ...input,
+                });
+            } else {
+                setInput({
+                    ...input,
+                    [e.target.name]: e.target.value,
+                });
+            }
+        }
+
         setInput({
             ...input,
             [e.target.name]: e.target.value,
@@ -84,7 +92,7 @@ const CreatePokemon = () => {
     return (
         <div className={Classes.container}>
             <NavLink to='/home'>
-                <button className={Classes.topButton}>¡Go Home!</button>
+                <img className={Classes.goHome} alt='CharmanderHome' src={CharmanderHome} width='130px' />
             </NavLink>
             <div>
                 <h1>Creá tu propio Pokémon:</h1>
