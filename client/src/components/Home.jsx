@@ -19,7 +19,7 @@ export default function Home() {
     const [, setReloadState] = useState(false);
     const dispatch = useDispatch();
     const allPokemons = useSelector((state) => state.pokemonAux);
-   // const statesLoaded = useSelector((state) => state.pokemon);
+    // const statesLoaded = useSelector((state) => state.pokemon);
     const allTypes = useSelector((state) => state.types);
 
     const [currentPage, setCurrentPage] = useState(1);//pag selected
@@ -75,7 +75,7 @@ export default function Home() {
                             <select className={Classes.select} onChange={setOrder} name='Type'>
                                 <option
                                     value='Ordenar por nombre'
-                                    selected disabled>
+                                >
                                     Ordenar por nombre
                                 </option>
                                 <option value='Ascendiente'>A-Z</option>
@@ -83,8 +83,7 @@ export default function Home() {
                             </select>
                             <select className={Classes.select} onChange={setOrder} name='Type'>
                                 <option
-                                    value='Ordenar por ataque'
-                                    selected disabled>
+                                    value='Ordenar por ataque'>
                                     Ordenar por ataque
                                 </option>
                                 <option value='AMayorAtaque'>Menor a mayor</option>
@@ -93,19 +92,17 @@ export default function Home() {
                             <select className={Classes.select} onChange={handleFilterByType} name='Type'>
                                 <option
                                     value='Filtro por tipo'
-                                    selected disabled> Ordenar por tipo</option>
-                                {allTypes?.map((type) => {
-                                    return (
-                                        <option
-                                            key={type.name}
-                                            value={type.name}>{type.name}
-                                        </option>
-                                    )
-                                })
+                                > Ordenar por tipo</option>
+                                {allTypes?.map((type) => (
+                                    <option
+                                        key={type.name}
+                                        value={type.name}>{type.name}
+                                    </option>
+                                ))
                                 }
                             </select>
                             <select className={Classes.select} onChange={handleFilter} name='Origen'>
-                                <option value='Filtro por origen' selected disabled>Filtrar por origen</option>
+                                <option value='Filtro por origen' >Filtrar por origen</option>
                                 <option value='Predeterminado'>Todos los Pokemones</option>
                                 <option value='API'>Solo los de la API</option>
                                 <option value='DB'>Solo los Creados en BD</option>
@@ -124,7 +121,7 @@ export default function Home() {
                     <section className={Classes.sectionFlex}>
                         {currentPokemon.map((e) => {
                             return (
-                                <Fragment key={e.id}>
+                                <Fragment key={e.name}>
                                     <div>
                                         <Card
                                             key={e.id}

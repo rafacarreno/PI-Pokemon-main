@@ -6,8 +6,9 @@ import { NavLink } from "react-router-dom";
 import CharmanderHome from '../img/goHome.png';
 
 const CreatePokemon = () => {
-
+    
     const dispatch = useDispatch();
+    // const pokemones = useSelector((state) => state.pokemon);
     const types = useSelector((state) => state.types);
     const [input, setInput] = useState({
         name: "",
@@ -65,6 +66,11 @@ const CreatePokemon = () => {
     };
 
     const handleChange = (e) => {
+        // if (e.target.value && e.target.name === 'name'){
+        //     const pokeFind = pokemones.find((poke) => poke.name.toLowerCase() === e.targe.value?.toLowerCase());
+        //     console.log('pokeFind',pokeFind);
+        //     console.log('e.targe.value',e.targe.value);
+        // }
         setInput({
             ...input,
             [e.target.name]: e.target.value,
@@ -172,7 +178,7 @@ const CreatePokemon = () => {
                     <select onChange={(e) => handleSelect(e)}>
                         <option value='select'>Seleccionar</option>
                         {types && types.map((e) => (
-                            <option key={e} name='types' value={e.name}>{e.name}</option>
+                            <option key={e.name} name='types' value={e.name}>{e.name}</option>
                         ))}
                     </select>
                 </div>

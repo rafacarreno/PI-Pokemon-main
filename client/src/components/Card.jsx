@@ -23,7 +23,7 @@ export default function Card({ img, name, types, id }) {
             <div className={Classes.types}>
                 {types.map((type) => {
                     return (
-                        <div key={type}>
+                        <div className="type" key={type}>
                             <p>{type && (type[0].toUpperCase()).concat(type.slice(1, type.length))}</p>
                         </div>
                     );
