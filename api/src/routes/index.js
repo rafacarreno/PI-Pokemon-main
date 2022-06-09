@@ -119,7 +119,7 @@ const findPokemon = async (X) => {
 };
 
 
-//----------------------------------------------------------------GET /pokemons:--------------------------------------------------------------------------------------------
+//----------------------------------------------------------------GET /pokemons:& /pokemons?name="...":--------------------------------------------------------------------------------------------
 
 router.get('/pokemons', async (req, res) => {
     try {
@@ -130,7 +130,7 @@ router.get('/pokemons', async (req, res) => {
             if (findDbPoke) {
                 return res.send(findDbPoke);
             } else {
-                const findApiPoke = await findPokemon(name);
+                const findApiPoke = await findPokemon(name.toLowerCase());
                 return findApiPoke ? res.send(findApiPoke) : res.status(400).send(`No se encontro el Pokémon: ` + name);
             }
         } else {
@@ -145,7 +145,7 @@ router.get('/pokemons', async (req, res) => {
 
 
 
-//-------------------------------------------------------- GET /pokemons/{idPokemon} & /pokemons?name="...":-----------------------------------------------------------------------------
+//-------------------------------------------------------- GET /pokemons/{idPokemon} -----------------------------------------------------------------------------
 
 router.get('/pokemons/:id', async (req, res) => {
     try {
@@ -167,7 +167,14 @@ router.get('/pokemons/:id', async (req, res) => {
 
 router.post('/pokemons', async (req, res) => {
     try {
-
+        console.log('name', req.body.name);
+        console.log('height', req.body.height);
+        console.log('weight', req.body.weight);
+        console.log('hp', req.body.hp);
+        console.log('attack', req.body.attack);
+        console.log('defense', req.body.defense);
+        console.log('speed', req.body.speed);
+        console.log('img', req.body.img);
         const addPokemon = await Pokemon.create({
             name: req.body.name,
             height: req.body.height,
@@ -178,6 +185,9 @@ router.post('/pokemons', async (req, res) => {
             speed: req.body.speed,
             img: req.body.img,
         });
+        // console.log('NAME--->',req.body.name);
+        // console.log(HP, req.body.hp);
+        // console.log('addPokemon--->',addPokemon);
     
 
         const typesByDB = await Type.findAll({
@@ -192,7 +202,7 @@ router.post('/pokemons', async (req, res) => {
         res.status(200).send(`¡El Pokémon ${req.body.name} ha sido creado exitosamente!`);
     } catch (error) {
         console.log(error);
-        res.status(400).send({ errorMsg: error });
+        res.status(400).send('CACAAAAA');//{ errorMsg: error }
     }
 });
 
