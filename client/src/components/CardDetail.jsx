@@ -1,13 +1,6 @@
 import React from "react";
 import Classes from './CardDetail.module.css';
 
-// Ruta de detalle de Pokemon: debe contener
-
-// [ ] Los campos mostrados en la ruta principal para cada pokemon (imagen, nombre y tipos)
-// [ ] Número de Pokemon (id)
-// [ ] Estadísticas (vida, fuerza, defensa, velocidad)
-// [ ] Altura y peso
-
 const CardDetail = ({ pokeInfo }) => {
     return (
         <div className={Classes.container}>

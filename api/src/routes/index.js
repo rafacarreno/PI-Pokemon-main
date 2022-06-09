@@ -13,13 +13,6 @@ const router = Router();
 
 //---------------------------------------------------------------API DATA-----------------------------------------------------------------------------------------------------------
 
-// Ruta principal: debe contener
-
-// Imagen
-// Nombre
-// Tipos (Electrico, Fuego, Agua, etc)
-
-//https://pokeapi.co/api/v2/pokemon
 
 const apiData = async (api) => {
     try {
@@ -41,7 +34,6 @@ const apiData = async (api) => {
                 img: el.data.sprites.other["dream_world"].front_default ? el.data.sprites.other["dream_world"].front_default : el.data.sprites.other["official-artwork"].front_default ,//.versions["generation-vii"]["ultra-sun-ultra-moon"].front_default,//
             };
         });
-        //console.log('IMAGEEEN---->', pokemons.img);
         return pokemons;
     } catch (error) {
         console.log(error);
@@ -60,7 +52,6 @@ const dbData = async () => {
                 through: { attributes: [] },
             },
         });
-       // console.log('DBDATAAAA--->>',dbData[0].dataValues.types);
         const pokeDB = dbData?.map((e) => {
             return {
                 id: e.dataValues.id,
@@ -149,7 +140,7 @@ router.get('/pokemons', async (req, res) => {
 
 router.get('/pokemons/:id', async (req, res) => {
     try {
-        const { id } = req.params;//pregunto si id o(x idealmente) es un numero, ojo si convierte el numero en string, 
+        const { id } = req.params;
         if (id.includes('-')) {
             const dbPoke = await dbData();
             const findDbPoke = dbPoke.find((e) => e.id === id);
@@ -185,9 +176,6 @@ router.post('/pokemons', async (req, res) => {
             speed: req.body.speed,
             img: req.body.img,
         });
-        // console.log('NAME--->',req.body.name);
-        // console.log(HP, req.body.hp);
-        // console.log('addPokemon--->',addPokemon);
     
 
         const typesByDB = await Type.findAll({
@@ -202,7 +190,7 @@ router.post('/pokemons', async (req, res) => {
         res.status(200).send(`¡El Pokémon ${req.body.name} ha sido creado exitosamente!`);
     } catch (error) {
         console.log(error);
-        res.status(400).send('CACAAAAA');//{ errorMsg: error }
+        res.status(400).send({ errorMsg: error });
     }
 });
 
@@ -228,54 +216,4 @@ router.get('/types', async (req, res) => {
     }
 });
 
-
-// //---------------------------------------------------------------- TYPES DATA-------------------------------------------------------------------------------------
-// const typesData = async () => {
-//     try {
-//         const apiInfo = await axios.get('https://pokeapi.co/api/v2/type');
-//         const types = apiInfo.data.results.map((e) => {
-//             return {
-//                 name: e.name
-//             };
-//         });
-//         let dbTypes = await Type.findAll();
-//         //console.log('DBTYPES---->',dbTypes)
-//         if(dbTypes) {
-//             await Type.bulkCreate(types);
-//         } 
-//     } catch(error){
-//         console.log(error);
-//     }
-// };
-
-// const getTypes = async () => {
-//     try{
-//         let typesDb = await Type.findAll();
-//         //console.log('ACAAA---->> OK!:',typesDb);
-//         typesDb = typesDb.map((e) => e.toJSON());
-//         //console.log('ACAAA---->> OK!:',typesDb);
-//         return typesDb;
-//     } catch (error){
-//         console.log(error);
-//     }
-// };
-
-// //-------------------------------------------------------------GET /types-----------------------------------------------------------------------------------------
-// router.get('/types', async (req, res) => {
-//     try{
-//         await typesData();
-//         let allTypes = await getTypes();
-//         //console.log('ALLTYPES 1.0---->',allTypes)
-//         allTypes = allTypes.map((e) => {
-//             return{
-//                 id:e.id,
-//                 name:e.name,
-//             };
-//         });
-//         //console.log('ALLTYPES 2.0---->',allTypes)
-//         res.status(200).send(allTypes);
-//     }catch(error){
-//         console.log(error);
-//     }
-// });
 module.exports = router;

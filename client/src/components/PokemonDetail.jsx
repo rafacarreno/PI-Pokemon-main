@@ -22,7 +22,7 @@ const PokemonDetail = () => {
                 <main >
                     <div className={Classes.subContainer_name}>
                         {DataPoke.name?.toUpperCase()}
-                        <img className={Classes.subContainer_img} alt="pokemon" src={DataPoke.img} width='250px'></img>
+                        <img className={Classes.subContainer_img} alt="pokemon" src={DataPoke.img}></img>
                     </div>
                 </main>
                 <span className={Classes.subContainer_card}>
@@ -31,7 +31,7 @@ const PokemonDetail = () => {
             </div>
             <div >
                 <Link to='/home'>
-                    <img className={Classes.goHome}alt='CharmanderHome' src={CharmanderHome} width='130px' />
+                    <img className={Classes.goHome} alt='CharmanderHome' src={CharmanderHome} width='130px' />
                 </Link>
             </div>
         </div>

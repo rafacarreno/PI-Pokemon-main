@@ -13,7 +13,7 @@ const CreatePokemon = () => {
 
     const dispatch = useDispatch();
 
-    const nameUsed = useSelector((state) => state.pokemonAux); 
+    const nameUsed = useSelector((state) => state.pokemonAux);
 
     const types = useSelector((state) => state.types);
 
@@ -34,10 +34,10 @@ const CreatePokemon = () => {
     }, [dispatch]);
 
 
-    const uniqueName =  () => {
-        return nameUsed?.find((e)=> e.name.toLowerCase() === input.name.toLowerCase())
+    const uniqueName = () => {
+        return nameUsed?.find((e) => e.name.toLowerCase() === input.name.toLowerCase())
     }
-    
+
     function validate() {
         let onlyCharacters = /^[A-Za-z\s]+$/g.test(input.name);
         //console.log('CHARACTERS', onlyCharacters);
@@ -73,10 +73,11 @@ const CreatePokemon = () => {
                     types: [],
                 });
                 alert(`Se ha creado con exito el Pokémon: "${input.name}"`);
-                dispatch(getPokemons())           
+                dispatch(getPokemons())
             }
         } else {
-            alert(`El nombre: "${input.name}" ya existe. Por favor modifique el nombre.`);        }
+            alert(`El nombre: "${input.name}" ya existe. Por favor modifique el nombre.`);
+        }
     }
 
     const handleChange = (e) => {

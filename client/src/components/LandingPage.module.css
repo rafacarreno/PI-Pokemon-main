@@ -3,27 +3,28 @@
     width: 100%;
     background-image: url(../img/LandingPage/landpage33.jpg);
     position: absolute;
-    
-
 }
-.container_landing h1{
+
+.container_landing h1 {
     color: white;
     font-size: 100px;
-    text-shadow:  3px 3px 4px black;
+    text-shadow: 3px 3px 4px black;
 }
+
 .container_landing_img {
     width: 10%;
     position: absolute;
     top: 0%;
     left: 0%;
 }
-.imgBottom{
+
+.imgBottom {
     position: absolute;
     bottom: 3%;
     right: 3%;
     width: 15%;
 }
+
 .imgBottom:hover {
     transform: scale(1.1);
 }
-

@@ -1,157 +1,79 @@
-.container{
+.container {
     background-color: rgb(250, 153, 26);
     height: 100vh;
-} 
-
-@media screen and (max-width: 1366px){ 
-    .container_h1{
-        width: 100%;
-        position: relative;
-        font-size: 300px;
-        margin: 0%;
-        letter-spacing: -50px;
-        bottom: 55px;
-    }
-    .container_h1 img {
-        position: relative;
-        left: 25px;
-        margin: 0%;
-        justify-content: center;
-    }
-    .container_h2{
-        position: relative;
-        font-size: 80px;
-        justify-content: center;
-        bottom: 130px;
-        margin: 0%;
-    }
-    .container_img{
-        position: absolute;
-        left: 0%;
-        bottom: 0%;
-        margin: 0%;
-    }        
 }
-/* @media screen and (max-width: 1184px){ 
-    .container_h1{
-        position: relative;
-        font-size: 300px;
-        margin: 0%;
-        letter-spacing: -50px;
-        bottom: 55px;
-    }
-    .container_h1 img {
-        position: relative;
-        left: 25px;
-        margin: 0%;
-        justify-content: center;
-    }
-    .container_h2{
-        position: relative;
-        font-size: 80px;
-        justify-content: center;
-        bottom: 130px;
-        margin: 0%;
-    }
-    .container_img{
-        position: absolute;
-        left: 0%;
-        bottom: 0%;
-        margin: 0%;
-    }        
-} */
 
-@media screen and (max-width: 883px){
-    .container_h1{
-        width: 100%;
-        position: relative;
+.container_img {
+    position: absolute;
+    width: 180px;
+    left: 1%;
+    bottom: 0%;
+    margin: 0%;
+}
+
+.container_div1 {
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width: 1370px) {
+
+    .container_h1 {
+        position: absolute;
+        letter-spacing: 60px;
+        font-size: 200px;
+        left: 36%;
+        bottom: 30%;
+    }
+
+    .container_h1 img {
+        position: absolute;
+        width: 38%;
+        top: 20%;
+        left: 24%;
+
+    }
+
+    .container_h2 {
+        position: absolute;
+        font-size: 50px;
+        bottom: 25%;
+        left: 28.5%;
+
+    }
+}
+
+@media screen and (max-width: 735px) {
+
+    .container_h1 {
+        left: 20%;
+    }
+
+    .container_h2 {
+        left: 5%;
+    }
+}
+
+@media screen and (max-width: 583px) {
+
+    .container_h1 {
+        letter-spacing: 40px;
         font-size: 150px;
-        margin: 0%;
-        letter-spacing: -25px;
-        bottom: 20px;
+        left: 20%;
+        bottom: 40%;
     }
-    .container_h1 img {
-        position: relative;
-        width: 20%;
-        top: 10px;
-        left: 10px;
-        margin: 0%;
-        justify-content: center;
-    }
-    .container_h2{
-        position: relative;
-        font-size: 80px;
-        justify-content: center;
-        bottom: 50px;
-        margin: 0%;
-    }
-    .container_img{
-        position: absolute;
-        left: 0%;
-        bottom: 0%;
-        margin: 0%;
-    }        
-}
 
-@media screen and (max-width: 624px){
-    .container_h1{
-        width: 100%;
-        position: relative;
-        font-size: 100px;
-        margin: 0%;
-        letter-spacing: -20px;
-        bottom: 0%;
-    }
     .container_h1 img {
-        position: relative;
-        width: 85px;
-        left: 10px;
-        margin: 0%;
-        justify-content: center;
-    }
-    .container_h2{
-        position: relative;
-        font-size: 40px;
-        justify-content: center;
-        bottom: 0%;
-        margin: 0%;
-    }
-    .container_img{
-        position: absolute;
-        left: 0%;
-        bottom: 0%;
-        margin: 0%;
-    }        
-}
+        top: 25%;
+        left: 25%;
 
-@media screen and (max-width: 500px){
-    .container_h1{
-        width: 100%;
-        position: relative;
-        font-size: 100px;
-        margin: 0%;
-        letter-spacing: -20px;
-        bottom: 0%;
     }
-    .container_h1 img {
-        position: relative;
-        width: 85px;
-        left: 10px;
-        margin: 0%;
-        justify-content: center;
-    }
-    .container_h2{
-        position: relative;
-        font-size: 40px;
-        justify-content: center;
-        bottom: 0%;
-        margin: 0%;
-    }
-    .container_img{
+
+    .container_h2 {
         position: absolute;
-        width: 180px;
-        left: 0%;
-        bottom: 0%;
-        margin: 0%;
-    }        
+        font-size: 30px;
+        bottom: 30%;
+        left: 12%;
+
+    }
 }

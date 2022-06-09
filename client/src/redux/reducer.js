@@ -46,7 +46,7 @@ const filterByOrigin = (origin, apiPokes, dbPokes, allPokes) => {
         case 'API':
             return apiPokes;
         case 'DB':
-            if (dbPokes.length === 0){
+            if (dbPokes.length === 0) {
                 alert('Aún no se ha creado ningun Pokémon.');
                 return allPokes;
             }
@@ -60,7 +60,9 @@ const filterByOrigin = (origin, apiPokes, dbPokes, allPokes) => {
 const filterByTypes = (type, arr) => {
     let filterAux = arr.filter((po) => po.types.includes(type));
     if (!filterAux.length > 0) {
-        alert(`No se encontraron Pokémons del Tipo: "${type}".`);
+        if (type !== 'Filtro por tipo') {
+            alert(`No se encontraron Pokémons del Tipo: "${type}".`);
+        }
         return arr;
     } else {
         return filterAux;

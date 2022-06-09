@@ -19,7 +19,6 @@ export default function Home() {
     const [, setReloadState] = useState(false);
     const dispatch = useDispatch();
     const allPokemons = useSelector((state) => state.pokemonAux);
-    // const statesLoaded = useSelector((state) => state.pokemon);
     const allTypes = useSelector((state) => state.types);
 
     const [currentPage, setCurrentPage] = useState(1);//pag selected
@@ -58,8 +57,6 @@ export default function Home() {
         setCurrentPage(1);
         setReloadState((stateAux) => !stateAux);
     }
-
-
 
     const handleloader = () => {
         window.location.reload();//para actualizar la pagina!

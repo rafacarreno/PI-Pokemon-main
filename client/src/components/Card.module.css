@@ -1,4 +1,3 @@
-
 .container {
     margin-top: 100px;
     margin-left: 60px;
@@ -35,6 +34,7 @@
     width: 100%;
     height: 100%;
 }
+
 a {
     text-decoration: none;
     color: black
@@ -65,5 +65,3 @@ a {
     align-self: auto;
     font-size: 20px;
 }
-
-

@@ -4,7 +4,7 @@
 }
 
 .mainFlex {
-    
+
     background: url(../img/Home/Home.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -16,6 +16,7 @@
     padding: 20px 0;
     height: 1400px;
 }
+
 .sectionFlex {
     display: flex;
     flex-direction: row;
@@ -68,5 +69,5 @@
 .loading {
     position: absolute;
     left: 800px;
-    top: 400px;  
+    top: 400px;
 }

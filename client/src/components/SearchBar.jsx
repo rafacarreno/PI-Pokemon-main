@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import {getPokemonName} from '../redux/actions';
+import { getPokemonName } from '../redux/actions';
 import Classes from './SearchBar.module.css';
 import IconCrear from '../img/pokedexCrearPokemon.png';
 import PokedexSearch from '../img/pokedexHomeCrearPokemon.png';

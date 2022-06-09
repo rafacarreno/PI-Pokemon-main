@@ -7,13 +7,13 @@ import Charmander from '../img/CharisarGoHome.png';
 const NotFoundPage = () => {
     return (
         <div className={Classes.container}>
-            <div>
-                <h1 className={Classes.container_h1}>4 <img alt = 'Pokeball'src={Pokeball} />  4</h1>
+            <div className={Classes.container_div1}>
+                <h1 className={Classes.container_h1}>4 <img alt='Pokeball' src={Pokeball} />  4</h1>
                 <h2 className={Classes.container_h2}>OOPS! PAGE NOT FOUND.</h2>
             </div>
             <NavLink to='/home'>
-                <img  className={Classes.container_img} alt="Charmander" src={Charmander}/>
-            </NavLink>            
+                <img className={Classes.container_img} alt="Charmander" src={Charmander} />
+            </NavLink>
         </div>
     )
 }

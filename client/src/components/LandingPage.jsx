@@ -7,7 +7,7 @@ import PokeLogo from '../img/LandingPage/pokelogo.png';
 export default function LandingPage() {
     return (
         <div className={Classes.container_landing}>
-            <img alt='pokelogo' src={PokeLogo} className={Classes.container_landing_img}/>
+            <img alt='pokelogo' src={PokeLogo} className={Classes.container_landing_img} />
             <h1 >¡Bienvenidos!</h1>
             <div>
                 <NavLink to='/Home'>

@@ -1,14 +1,15 @@
-.container{
+.container {
     padding: 10px 20px;
     border-radius: 30px;
     border: 3px solid black;
     background-color: #faf8f8;
-    opacity: 0.8;    
+    opacity: 0.8;
     font-size: 20px;
     position: absolute;
+    left: 50px;
 }
 
-.top{
+.top {
     width: 100%;
 }
 
@@ -16,17 +17,35 @@
     width: 100%;
 }
 
-.stat{
+.stat {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
 
-.types{
+.types {
     position: relative;
     display: flex;
     width: 100%;
     justify-content: space-evenly;
     align-content: center;
+}
+
+@media screen and (max-width: 1172px) {
+    .container {
+        left: 150px;
+    }
+}
+
+@media screen and (max-width: 888px) {
+    .container {
+        left: 100px;
+    }
+}
+
+@media screen and (max-width: 775px) {
+    .container {
+        left: 0px;
+    }
 }
